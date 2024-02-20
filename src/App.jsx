@@ -356,6 +356,10 @@ function Cardback({card}){
 )
 }
 
+function log(){
+  console.log(stacks)
+}
+
 function Combo({deck}){
   return (
   <div className='combo'>
@@ -397,20 +401,7 @@ function Combo({deck}){
       setGoals(arr)
   }
 
-  function nextCard(){
-    let gameStacks = [...stacks]
-    console.log(gameStacks)
-    for (let i =0; i < 3; i++){
-      let mainstack = [gameStacks[i].topStacks];
-      let discards = [gameStacks[i].discardStacks];
-      discards.unshift(mainstack.shift());
-      gameStacks[i].topStacks = mainstack;
-      gameStacks[i].discardStacks = discards;
-    }
-    console.log(gameStacks)
-    setStacks(gameStacks);
-  }
-  
+
   function deal(){
     let gameStacks = [ 
       {
@@ -423,22 +414,22 @@ function Combo({deck}){
       }];
     gameDeck = JSON.parse(JSON.stringify(startDeck));
     shuffle(gameDeck)
+    for (let i = 0; i < 3; i++){
+      gameStacks[i].discardStacks.push(gameDeck.shift())
+    }
     while(gameDeck.length > 0){
         for (let j = 0; j < gameStacks.length; j++){
             gameStacks[j].topStacks.push(gameDeck.shift());
         }
     }
     setStacks(gameStacks)
-
+    setRemaining(gameStacks[0].topStacks.length);
     }
 
     function newGame(){
       newGoals()
-      console.log(gameDeck)
       deal();
-      // nextCard();
       // setStatus(true)
-      // setRemaining(stacks[0].topStacks.length);
     }
 
     function reshuffle(){
@@ -461,19 +452,34 @@ function Combo({deck}){
   
   function nextMove(){
     nextCard();
-    //       let allStacks = [
-    //           {topStacks: stacks[0][stacks[0].length-1],
-    //               discardStacks: discards[0][discards[0].length-1]},
-    //           {topStacks: stacks[1][stacks[0].length-1],
-    //               discardStacks: discards[1][discards[0].length-1]},
-    //           {topStacks: stacks[2][stacks[0].length-1],
-    //               discardStacks: discards[2][discards[0].length-1]}];
-    //       let remaining = stacks[0].length;
-    //       setStacks(allStacks);
+          // let allStacks = [
+          //     {topStacks: stacks[0][stacks[0].length-1],
+          //         discardStacks: discards[0][discards[0].length-1]},
+          //     {topStacks: stacks[1][stacks[0].length-1],
+          //         discardStacks: discards[1][discards[0].length-1]},
+          //     {topStacks: stacks[2][stacks[0].length-1],
+          //         discardStacks: discards[2][discards[0].length-1]}];
+          // let remaining = stacks[0].length;
+          // setStacks(allStacks);
              setRemaining(stacks[0].topStacks.length);
+
   }
   
+  function nextCard(){
+    let gameStacks = stacks
+    for (let i =0; i < 3; i++){
+      let mainstack = gameStacks[i].topStacks;
+      let discards = gameStacks[i].discardStacks;
+      console.log(mainstack, discards)
+      discards.unshift(mainstack.shift());
+      gameStacks[i].topStacks = mainstack;
+      gameStacks[i].discardStacks = discards;
+    }
+    setStacks(gameStacks);
 
+    console.log(stacks)
+  }
+  
   
 
 
@@ -492,7 +498,7 @@ function Combo({deck}){
       })}
     </div>
     <div className = 'menuWrapper'>
-    <img className = 'image' src={cover} alt='game cover'></img>
+    <img className = 'image' src={cover} alt='game cover' onClick={log}></img>
       <h2>Cards remaining: {remaining}</h2>
       <Menu newGame={newGame} shuffle={reshuffle} next={nextMove}/>
     </div>
