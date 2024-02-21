@@ -429,60 +429,54 @@ function Combo({deck}){
     function newGame(){
       newGoals()
       deal();
+
       // setStatus(true)
     }
 
     function reshuffle(){
       // Reshuffle when stacks are low. Change to auto when next card is not available.
-          //   let allStacks = [
-          //       {topStacks: stacks[0][stacks[0].length-1],
-          //           discardStacks: discards[0][discards[0].length-1]},
-          //       {topStacks: stacks[1][stacks[0].length-1],
-          //           discardStacks: discards[1][discards[0].length-1]},
-          //       {topStacks: stacks[2][stacks[0].length-1],
-          //           discardStacks: discards[2][discards[0].length-1]}];
-          //   let remaining = stacks[0].length;
-          //   setStacks(allStacks);
-          // setRemaining(data.remaining);
-          // alert('reshuffle')
-          // console.log(stacks)
+          let [tops, discardPile] = [[stacks[0].discardStacks[0], stacks[1].discardStacks[0], stacks[2].discardStacks[0]], 
+                                    [...stacks[0].discardStacks.slice(1), ...stacks[1].discardStacks.slice(1), ...stacks[2].discardStacks.slice(1)]];
+          shuffle(discardPile);
+          let newStacks = [
+            {
+              topStacks: stacks[0].topStacks,
+              discardStacks: [tops[0]],
+            },
+            {
+              topStacks: stacks[1].topStacks,
+              discardStacks: [tops[1]],
+            },
+            {
+              topStacks: stacks[2].topStacks,
+              discardStacks: [tops[2]],
+            },
+          ]
+          while(discardPile.length > 0){
+            for (let j = 0; j < 3; j++){
+                newStacks[j].topStacks.push(discardPile.shift());
+            }
+        }
+        setStacks(newStacks)
+        setRemaining(newStacks[0].topStacks.length);
     }
 
-    
-  
-  function nextMove(){
-    nextCard();
-          // let allStacks = [
-          //     {topStacks: stacks[0][stacks[0].length-1],
-          //         discardStacks: discards[0][discards[0].length-1]},
-          //     {topStacks: stacks[1][stacks[0].length-1],
-          //         discardStacks: discards[1][discards[0].length-1]},
-          //     {topStacks: stacks[2][stacks[0].length-1],
-          //         discardStacks: discards[2][discards[0].length-1]}];
-          // let remaining = stacks[0].length;
-          // setStacks(allStacks);
-             setRemaining(stacks[0].topStacks.length);
-
-  }
-  
   function nextCard(){
+    if (remaining <= 4){
+      reshuffle()
+    }
     let gameStacks = stacks
     for (let i =0; i < 3; i++){
       let mainstack = gameStacks[i].topStacks;
       let discards = gameStacks[i].discardStacks;
-      console.log(mainstack, discards)
       discards.unshift(mainstack.shift());
       gameStacks[i].topStacks = mainstack;
       gameStacks[i].discardStacks = discards;
     }
     setStacks(gameStacks);
-
-    console.log(stacks)
+    setRemaining(stacks[0].topStacks.length);
   }
   
-  
-
-
   return (
     <>
      <h1>Welcome to Your Perfect Home</h1>
@@ -500,7 +494,7 @@ function Combo({deck}){
     <div className = 'menuWrapper'>
     <img className = 'image' src={cover} alt='game cover' onClick={log}></img>
       <h2>Cards remaining: {remaining}</h2>
-      <Menu newGame={newGame} shuffle={reshuffle} next={nextMove}/>
+      <Menu newGame={newGame} shuffle={reshuffle} next={nextCard}/>
     </div>
     </div>
 
