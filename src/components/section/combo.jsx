@@ -2,10 +2,8 @@
 // import Card from '../card/card'
 // import Cardback from '../card/cardback'
 
-export default function Combo(deck){
-        let topCard = deck.topStacks;
-        let topDiscard = deck.discardStacks;
-        console.log(topCard);
+export default function Combo(deck, discard){
+        // console.log(topCard);
         return (
         <div className='combo'>
         <div className='cardFront'>

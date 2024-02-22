@@ -1,11 +1,17 @@
 *{
   margin: 0;
-  padding: 9;
+  padding: 0;
 }
 .App {
   text-align: center;
   background-color:palegoldenrod;
   height: 100%;
+}
+body{
+  text-align: center;
+  background-color:palegoldenrod;
+  height: 100%;
+  padding-top: 20px;
 }
 
 ul {
@@ -35,11 +41,10 @@ ul > li {
 }
 
 .cardFront {
-  background-image: url(./components/card/door.jpg) ;
+  background-image: url(./assets/door.jpg) ;
   width: 190px;
   height: 275px;
   background-size: cover;
-  /* display: inline-block; */
   margin: 1rem auto;
   vertical-align: top;
   border: 1px solid black;
@@ -54,7 +59,7 @@ ul > li {
   font-size: 1rem;
 }
 
-.biz{
+.bis{
   background-color: rgba(218, 62, 62, 0.65);
   color: white;
 }
@@ -65,7 +70,7 @@ ul > li {
   background-color: rgba(224, 90, 0, 0.65);
   color: white;
 }
-.stock_exchange{
+.real_estate{
   background-color: rgba(111, 3, 121, 0.65);
   color: white;
 }
@@ -90,7 +95,7 @@ ul > li {
 }
 
 .cardBack{
-  background-color: white;
+  background-color: gray;
   border: 1px solid black;
   width: 190px;
   height: 275px;
@@ -100,7 +105,6 @@ ul > li {
   justify-content: center;
   margin: 1rem auto;
 }
-
 
 .combo{
   background-color: rgb(90, 90, 95);
@@ -168,5 +172,198 @@ button {
   margin: .25rem;
   font-size: 1rem;
   border-radius: 4px;
+  width: 50%;
 }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul > li {
+  padding: .25rem;
+}
+
+.wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.title{
+  text-align: center;
+  font-size: 42px;
+
+}
+
+.cardArea{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  margin: 0.5rem;
+  height: 630px;
+
+}
+
+.flip{
+  transform: rotateY( 360deg ) ;
+  transition: transform 0.65s;
+}
+
+
+
+.preview{
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0.2rem 0;
+  text-transform: capitalize;
+}
+
+.bis{
+  background-color: rgba(215, 37, 37, 0.65);
+  color: white;
+}
+.fence{
+  background-color: rgba(255, 255, 255);
+}
+.temp_agency{
+  background-color: rgba(255, 102, 0, 0.65);
+  color: white;
+}
+.real_estate{
+  background-color: rgba(111, 3, 121, 0.65);
+  color: white;
+}
+.park{
+  background-color: rgba(0, 110, 24, 0.65);
+  color: white;
+}
+.pool{
+  background-color: rgba(23, 139, 233, 0.65);
+  color: white;
+}
+
+.number{
+  font-size: 4rem;
+  background-color: rgba(220, 220, 220, 0.80);
+  display: flex;
+  justify-content: center;
+  margin: 4rem auto;
+  width: 75%;
+  border: 1px solid black;
+
+}
+
+
+.combo{
+  background-color: rgb(90, 90, 95);
+  width: 220px;
+  height: 605px;
+  margin: 10px;
+  border: 1.5px solid black;
+
+}
+
+.goals{
+  flex-grow: 1;
+  width: 15%;
+  max-width: 450px;
+}
+
+.menuWrapper{
+  width: 300px;
+  margin-top: 0.5rem;
+}
+
+.ability{
+  font-size: 1.55rem;
+  border: 1px solid black;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  text-transform: capitalize;
+  background-size: 100px auto;
+  background-repeat: no-repeat;
+  background-position: 50% 25%;
+  padding-top: 180px;
+}
+
+.ability.park{
+  background-image: url(./assets/nature.png);
+}
+
+.ability.real_estate{
+  background-image: url(./assets/apartment.png);
+}
+
+.ability.fence{
+  background-image: url(./assets/picket.png);
+}
+
+.ability.bis{
+  background-image: url(./assets/postbox.png);
+}
+
+.ability.pool{
+  background-image: url(./assets/swimming-pool.png);
+}
+
+.ability.temp_agency{
+  background-image: url(./assets/house.png);
+}
+
+.points{
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.goalPoint1, .goalPoint2{
+  padding: 3%;
+  margin: 5px;
+  border-radius: 15px;
+}
+
+.goalPoint1.scored{
+  background-color: rgb(114, 114, 114);
+  color: rgba(73, 73, 73, 0.381);;
+}
+
+
+.goalCard{
+  border: 1px solid black;
+  margin: .5rem .5rem;
+  margin-bottom: 1rem;
+  padding: .5rem;
+}
+
+.goalDetail{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-around;
+}
+
+.goalDetail h1{
+  text-align: center;
+  padding: 10px 0;
+}
+
+.cover{
+  max-width: 70%;
+  height: auto;
+  
+}
+
+.menu{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
 
