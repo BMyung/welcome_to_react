@@ -159,7 +159,7 @@ flex-direction: column;
 }
 
 .image{
-  max-width: 60%;
+  width: min(60%, 300px);
   height: auto;
   
 }
@@ -172,7 +172,12 @@ button {
   margin: .25rem;
   font-size: 1rem;
   border-radius: 4px;
-  width: 50%;
+  width: min(50%, 350px);
+}
+
+button:disabled{
+  background-color: gray;
+  opacity: 0.25;
 }
 
 ul {

@@ -1,10 +1,9 @@
-export default function Menu({newGame, shuffle, next}){
+export default function Menu({newGame, shuffle, next, active}){
         return (
             <div className = 'menu'>
                 <button onClick={newGame}>New Game</button>
-                <br/>
-                <button onClick={next}>Next Card</button>
-                <button onClick={shuffle}>Reshuffle</button>
+                <button disabled={!active} onClick={next}>Next Card</button>
+                <button disabled={!active} onClick={shuffle}>Reshuffle</button>
                 <div className='links'>
                 Scoresheets available here:
                 <ul>

@@ -5,272 +5,8 @@ import './App.css';
 import Menu from './components/section/menu'
 import cover from './cover.jpg';
 import './App.css'
+import { startDeck, goalList } from './data/deck';
 
-
-const startDeck = [
-  {number: 1,
-  ability: 'park'},
-  {number: 2,
-  ability: 'park'},
-  {number: 4,
-  ability: 'park'},
-  {number: 5,
-  ability: 'park'},
-  {number: 5,
-  ability: 'park'},
-  {number: 6,
-  ability: 'park'},
-  {number: 7,
-  ability: 'park'},
-  {number: 7,
-  ability: 'park'},
-  {number: 8,
-  ability: 'park'},
-  {number: 8,
-  ability: 'park'},
-  {number: 9,
-  ability: 'park'},
-  {number: 9,
-  ability: 'park'},
-  {number: 10,
-  ability: 'park'},
-  {number: 11,
-  ability: 'park'},
-  {number: 11,
-  ability: 'park'},
-  {number: 12,
-  ability: 'park'},
-  {number: 14,
-  ability: 'park'},
-  {number: 15,
-  ability: 'park'},
-  {number: 1,
-  ability: 'real_estate'},
-  {number: 2,
-  ability: 'real_estate'},
-  {number: 4,
-  ability: 'real_estate'},
-  {number: 5,
-  ability: 'real_estate'},
-  {number: 5,
-  ability: 'real_estate'},
-  {number: 6,
-  ability: 'real_estate'},
-  {number: 7,
-  ability: 'real_estate'},
-  {number: 7,
-  ability: 'real_estate'},
-  {number: 8,
-  ability: 'real_estate'},
-  {number: 8,
-  ability: 'real_estate'},
-  {number: 9,
-  ability: 'real_estate'},
-  {number: 9,
-  ability: 'real_estate'},
-  {number: 10,
-  ability: 'real_estate'},
-  {number: 11,
-  ability: 'real_estate'},
-  {number: 11,
-  ability: 'real_estate'},
-  {number: 12,
-  ability: 'real_estate'},
-  {number: 14,
-  ability: 'real_estate'},
-  {number: 15,
-  ability: 'real_estate'},
-  {number: 1,
-  ability: 'fence'},
-  {number: 2,
-  ability: 'fence'},
-  {number: 3,
-  ability: 'fence'},
-  {number: 5,
-  ability: 'fence'},
-  {number: 5,
-  ability: 'fence'},
-  {number: 6,
-  ability: 'fence'},
-  {number: 6,
-  ability: 'fence'},
-  {number: 7,
-  ability: 'fence'},
-  {number: 8,
-  ability: 'fence'},
-  {number: 8,
-  ability: 'fence'},
-  {number: 9,
-  ability: 'fence'},
-  {number: 10,
-  ability: 'fence'},
-  {number: 10,
-  ability: 'fence'},
-  {number: 11,
-  ability: 'fence'},
-  {number: 11,
-  ability: 'fence'},
-  {number: 13,
-  ability: 'fence'},
-  {number: 14,
-  ability: 'fence'},
-  {number: 15,
-  ability: 'fence'},
-  {number: 3,
-  ability: 'pool'},
-  {number: 4,
-  ability: 'pool'},
-  {number: 6,
-  ability: 'pool'},
-  {number: 7,
-  ability: 'pool'},
-  {number: 8,
-  ability: 'pool'},
-  {number: 9,
-  ability: 'pool'},
-  {number: 10,
-  ability: 'pool'},
-  {number: 12,
-  ability: 'pool'},
-  {number: 13,
-  ability: 'pool'},
-  {number: 3,
-  ability: 'bis'},
-  {number: 4,
-  ability: 'bis'},
-  {number: 6,
-  ability: 'bis'},
-  {number: 7,
-  ability: 'bis'},
-  {number: 8,
-  ability: 'bis'},
-  {number: 9,
-  ability: 'bis'},
-  {number: 10,
-  ability: 'bis'},
-  {number: 12,
-  ability: 'bis'},
-  {number: 13,
-  ability: 'bis'},
-  {number: 3,
-  ability: 'temp_agency'},
-  {number: 4,
-  ability: 'temp_agency'},
-  {number: 6,
-  ability: 'temp_agency'},
-  {number: 7,
-  ability: 'temp_agency'},
-  {number: 8,
-  ability: 'temp_agency'},
-  {number: 9,
-  ability: 'temp_agency'},
-  {number: 10,
-  ability: 'temp_agency'},
-  {number: 12,
-  ability: 'temp_agency'},
-  {number: 13,
-  ability: 'temp_agency'}
-
-]
-
-const goalList = [[
-  {level: 1,
-  goal: '[⌂] [⌂] [⌂] [⌂] [⌂] [⌂]',
-  description: 'Six [1]s',
-  first_points: 8,
-  second_points: 4},
-  {level: 1,
-  goal: '[⌂⌂] [⌂⌂] [⌂⌂] [⌂⌂]',
-  description: 'Four [2]s',
-  first_points: 8,
-  second_points: 4},
-  {level: 1,
-  goal: '[⌂⌂⌂] [⌂⌂⌂] [⌂⌂⌂]',
-  description: 'Three [3]s',
-  first_points: 8,
-  second_points: 4},
-  {level: 1,
-  goal: '[⌂⌂⌂⌂] [⌂⌂⌂⌂] [⌂⌂⌂⌂] [⌂⌂⌂⌂]',
-  description: 'Four [4]s',
-  first_points: 6,
-  second_points: 3},
-  {level: 1,
-  goal: '[⌂⌂⌂⌂⌂⌂] [⌂⌂⌂⌂⌂⌂]',
-  description: 'Two [6]s',
-  first_points: 10,
-  second_points: 6},
-  {level: 1,
-  goal: '[⌂⌂⌂⌂⌂] [⌂⌂⌂⌂⌂]',
-  description: 'Two [5]s',
-  first_points: 8,
-  second_points: 4}],
-  [
-  {level: 2,
-  goal: '[⌂⌂⌂⌂⌂] [⌂⌂] [⌂⌂]',
-  description: 'One [5] Two [2]s',
-  first_points: 10,
-  second_points: 6},
-  {level: 2,
-  goal: '[⌂⌂⌂] [⌂⌂⌂] [⌂⌂⌂⌂]',
-  description: 'Two [3]s One [4]',
-  first_points: 12,
-  second_points: 7},
-  {level: 2,
-  goal: '[⌂⌂⌂⌂⌂⌂] [⌂] [⌂] [⌂]',
-  description: 'One [6] Three [1]s',
-  first_points: 11,
-  second_points: 6},
-  {level: 2,
-  goal: '[⌂⌂⌂] [⌂⌂⌂⌂⌂⌂]',
-  description: 'One [3] One [6]',
-  first_points: 8,
-  second_points: 4},
-  {level: 2,
-  goal: '[⌂⌂⌂⌂] [⌂] [⌂] [⌂]',
-  description: 'One [4] Three [1]s',
-  first_points: 9,
-  second_points: 5},
-  {level: 2,
-  goal: '[⌂⌂⌂⌂⌂] [⌂⌂⌂⌂]',
-  description: 'One [5] One [4]',
-  first_points: 9,
-  second_points: 5},
-],
-[
-  {level: 3,
-  goal: '[⌂⌂] [⌂⌂⌂] [⌂⌂⌂⌂⌂]',
-  description: 'One [2] One [3] One [5]',
-  first_points: 13,
-  second_points: 7},
-  {level: 3,
-  goal: '[⌂] [⌂⌂] [⌂⌂⌂⌂⌂⌂]',
-  description: 'One [1] One [2] One [6]',
-  first_points: 12,
-  second_points: 7},
-  {level: 3,
-  goal: '[⌂⌂] [⌂⌂⌂⌂⌂]',
-  description: 'One [2] One [5]',
-  first_points: 7,
-  second_points: 3},
-  {level: 3,
-  goal: '[⌂] [⌂⌂] [⌂⌂] [⌂⌂⌂]',
-  description: 'One [1] Two [2] One [3]',
-  first_points: 11,
-  second_points: 6},
-  {level: 3,
-  goal: '[⌂] [⌂⌂⌂⌂] [⌂⌂⌂⌂⌂]',
-  description: 'One [1] One [4] One [5]',
-  first_points: 13,
-  second_points: 7},
-  {level: 3,
-  goal: '[⌂⌂⌂] [⌂⌂⌂⌂]',
-  description: 'One [3] One [4]',
-  first_points: 7,
-  second_points: 3},
-]
-]
-
-// let gameDeck = JSON.parse(JSON.stringify(startDeck));
 
   function shuffle(deck){ 
     var m = deck.length, t, i;
@@ -357,7 +93,7 @@ function Cardback({card}){
 }
 
 function log(){
-  // console.log(stacks)
+  console.log(gameStacks, discardStack)
 }
 
 function Combo({deck, discard}){
@@ -370,7 +106,7 @@ function Combo({deck, discard}){
 }
 
   // const [count, setCount] = useState(0)
-  // const [gameStatus, setStatus] = useState(false);
+  const [gameStatus, setStatus] = useState(false);
   const [gameStacks, setGameStacks] = useState([[],[],[]]);
   const [discardStack, setDiscardStack] = useState([[],[],[]])
   const [remaining, setRemaining] = useState(null);
@@ -402,7 +138,7 @@ function Combo({deck, discard}){
   function deal(){
     let topStacks = [[],[],[]];
     let discards = [[],[],[]];
-    let gameDeck = JSON.parse(JSON.stringify(startDeck));
+    let gameDeck = [...startDeck];
     shuffle(gameDeck)
     for (let i = 0; i < 3; i++){
       discards[i].push(gameDeck.shift())
@@ -420,47 +156,42 @@ function Combo({deck, discard}){
     function newGame(){
       newGoals()
       deal();
-
-      // setStatus(true)
+      setStatus(true)
     }
 
     function reshuffle(){
-    //   // Reshuffle when stacks are low. Change to auto when next card is not available.
-    //       let [tops, discardPile] = [[stacks[0].discardStacks[0], stacks[1].discardStacks[0], stacks[2].discardStacks[0]], 
-    //                                 [...stacks[0].discardStacks.slice(1), ...stacks[1].discardStacks.slice(1), ...stacks[2].discardStacks.slice(1)]];
-    //       shuffle(discardPile);
-    //       let newStacks = [
-    //         {
-    //           topStacks: stacks[0].topStacks,
-    //           discardStacks: [tops[0]],
-    //         },
-    //         {
-    //           topStacks: stacks[1].topStacks,
-    //           discardStacks: [tops[1]],
-    //         },
-    //         {
-    //           topStacks: stacks[2].topStacks,
-    //           discardStacks: [tops[2]],
-    //         },
-    //       ]
-    //       while(discardPile.length > 0){
-    //         for (let j = 0; j < 3; j++){
-    //             newStacks[j].topStacks.push(discardPile.shift());
-    //         }
-    //     }
-    //     setStacks(newStacks)
-    //     setRemaining(newStacks[0].topStacks.length);
+        //   // Reshuffle when stacks are low. Change to auto when next card is not available.
+              let discardPile = [...discardStack[0].slice(1), ...discardStack[1].slice(1), ...discardStack[2].slice(1)];
+              shuffle(discardPile);
+    
+    let addTop = [[],[],[]]
+              while(discardPile.length > 0){
+                for (let j = 0; j < 3; j++){
+                  addTop[j].push(discardPile.pop())
+                }
+            }
+            setGameStacks(gs =>
+              [
+              [...gs[0], ...addTop[0]],
+              [...gs[1], ...addTop[1]],
+              [...gs[2], ...addTop[2]]
+            ],
+              );
+            setDiscardStack(ds => [ds[0].slice(0,1), ds[1].slice(0,1), ds[2].slice(0,1)]);
+            setRemaining(26);
     }
 
   function nextCard(){
-    if (remaining <= 4){
-      reshuffle()
-    }
-      let top = [...gameStacks];
-      let discard =  [...discardStack]
-    for (let i =0; i < 3; i++){
-    }
-    setRemaining([0].topStacks.length);
+      if (remaining <= 4){
+        reshuffle()
+      }
+        setGameStacks(gs => [gs[0].slice(1), gs[1].slice(1), gs[2].slice(1)])
+        setDiscardStack(ds =>[
+          [...gameStacks[0].slice(0,1), ...ds[0]],
+          [...gameStacks[1].slice(0,1), ...ds[1]],
+          [...gameStacks[2].slice(0,1), ...ds[2]]
+        ])
+      setRemaining(n => n-1);
   }
   
   return (
@@ -483,7 +214,7 @@ function Combo({deck, discard}){
     <div className = 'menuWrapper'>
     <img className = 'image' src={cover} alt='game cover' onClick={log}></img>
       <h2>Cards remaining: {remaining}</h2>
-      <Menu newGame={newGame} shuffle={reshuffle} next={nextCard}/>
+      <Menu newGame={newGame} shuffle={reshuffle} next={nextCard} active={gameStatus}/>
     </div>
     </div>
 
