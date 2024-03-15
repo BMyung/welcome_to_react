@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import './App.css';
-// import Combo from './components/section/combo'
-// import Goal from './components/section/goals'
+import Combo from './components/section/combo'
+import Goal from './components/section/goals'
 import Menu from './components/section/menu'
 import cover from './cover.jpg';
 import './App.css'
@@ -19,93 +19,8 @@ import { startDeck, goalList } from './data/deck';
     return deck;
     }
 
-
-
 function App() {
 
-  function Goalpoints({points}){
-    const [color, setColor] = useState('white');
-    const [active, setActive] = useState(true)
-    let scoreCard = () => {
-        active ? setColor('rgb(59,59,59)') : setColor('white');
-        setActive(!active );
-    }
-    let first, second = '';
-    if (points){
-        first = points.first_points;
-        second = points.second_points
-    }
-    return (
-        <div className='points'>
-            <h2 style={{backgroundColor: color}} className='goalPoint1' onClick={scoreCard}>First: {first}</h2>
-            <h2 className='goalPoint2'>Rest: {second}</h2>
-        </div>
-
-    )
-}
-
-
-function Goal({goalCard}){
-        return (
-            <div className='goalCard'>
-                <h2>Level {goalCard.level}</h2>
-            
-                    <div className='goalDetail'>
-                        <h1>{goalCard.goal}</h1>
-                        <h3>{goalCard.description}</h3>
-                    </div>
-                        <Goalpoints points = {goalCard}/>
-            </div>
-
-        )
-}
-
-
-function Card({card}){
-  let abilityText = "";
-  let numText = "";
-  if (card){
-    abilityText = card.ability;
-    numText = card.number;
-  }
-  return (
-  <div className='cardFront'>
-      <div className = {'preview ' + abilityText}>
-      {abilityText.replace('_', ' ')}
-      </div>
-      <h1 className='number'>{numText}</h1>
-  </div>
-
-)
-}
-
-function Cardback({card}){
-  let abilityText = "";
-  if (card){
-    abilityText = card.ability;
-  }
-  return (
-  <div className='cardBack'>
-      <h1 className={'ability ' + abilityText} >{abilityText.replace('_', ' ')}</h1>
-  </div>
-
-)
-}
-
-function log(){
-  console.log(gameStacks, discardStack)
-}
-
-function Combo({deck, discard}){
-  return (
-  <div className='combo'>
-  <Card card={deck[0]}/>
-  <Cardback card={discard[0]}/>
-  </div>
-)
-}
-
-  // const [count, setCount] = useState(0)
   const [gameStatus, setStatus] = useState(false);
   const [gameStacks, setGameStacks] = useState([[],[],[]]);
   const [discardStack, setDiscardStack] = useState([[],[],[]])
@@ -133,7 +48,6 @@ function Combo({deck, discard}){
     }
       setGoals(arr)
   }
-
 
   function deal(){
     let topStacks = [[],[],[]];
@@ -212,7 +126,7 @@ function Combo({deck, discard}){
         <Combo deck={gameStacks[2]} discard={discardStack[2]}/>
     </div>
     <div className = 'menuWrapper'>
-    <img className = 'image' src={cover} alt='game cover' onClick={log}></img>
+    <img className = 'image' src={cover} alt='game cover'></img>
       <h2>Cards remaining: {remaining}</h2>
       <Menu newGame={newGame} shuffle={reshuffle} next={nextCard} active={gameStatus}/>
     </div>

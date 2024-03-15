@@ -1,21 +1,43 @@
+export default function Combo({deck, discard}){
+    return (
+    <div className='combo'>
+    <Card card={deck[0]}/>
+    <Cardback card={discard[0]}/>
+    </div>
+  )
+  }
 
-// import Card from '../card/card'
-// import Cardback from '../card/cardback'
 
-export default function Combo(deck, discard){
-        // console.log(topCard);
-        return (
-        <div className='combo'>
-        <div className='cardFront'>
-            <div className = {'preview ' + topCard.ability}>
-            {topCard.ability}
-            </div>
-            <h1 className='number'>{topCard.number}</h1>
+  function Card({card}){
+    let abilityText = "";
+    let numText = "";
+    if (card){
+      abilityText = card.ability;
+      numText = card.number;
+    }
+    return (
+    <div className='cardFront'>
+        <div className = {'preview ' + abilityText}>
+        {abilityText.replace('_', ' ')}
         </div>
-        <div className='cardBack'>
-            <h1 className={'ability ' + topDiscard.ability} >{topDiscard.ability}</h1>
-        </div>
-        </div>
+        <h1 className='number'>{numText}</h1>
+    </div>
+  
+  )
+  }
+  
+  function Cardback({card}){
+    let abilityText = "";
+    if (card){
+      abilityText = card.ability;
+    }
+    return (
+    <div className='cardBack'>
+        <h1 className={'ability ' + abilityText} >{abilityText.replace('_', ' ')}</h1>
+    </div>
+  
+  )
+  }
+  
 
-    )
-}
+  
