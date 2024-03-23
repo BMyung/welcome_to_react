@@ -20,7 +20,7 @@ import { startDeck, goalList } from './data/deck';
     }
 
 function App() {
-
+  const [animation, setAnimation] = useState('')
   const [gameStatus, setStatus] = useState(false);
   const [gameStacks, setGameStacks] = useState([[],[],[]]);
   const [discardStack, setDiscardStack] = useState([[],[],[]])
@@ -37,6 +37,12 @@ function App() {
   }
 ])
   
+// const move = ()=>{
+//   setAnimation('move')
+//   setTimeout(()=>{
+//     setAnimation('')
+//   }, 855)
+// }
 
   function newGoals(){
     let arr = [];
@@ -68,9 +74,9 @@ function App() {
     }
 
     function newGame(){
-      newGoals()
+      newGoals();
       deal();
-      setStatus(true)
+      setStatus(true);
     }
 
     function reshuffle(){
@@ -96,16 +102,23 @@ function App() {
     }
 
   function nextCard(){
+    setAnimation('move')
+    setTimeout(()=> {
       if (remaining <= 4){
         reshuffle()
       }
+      // setTimeout(()=>{
+        setAnimation('')
+      // }, 855)
         setGameStacks(gs => [gs[0].slice(1), gs[1].slice(1), gs[2].slice(1)])
         setDiscardStack(ds =>[
           [...gameStacks[0].slice(0,1), ...ds[0]],
           [...gameStacks[1].slice(0,1), ...ds[1]],
           [...gameStacks[2].slice(0,1), ...ds[2]]
         ])
-      setRemaining(n => n-1);
+     , setRemaining(n => n-1);
+    }, 850
+    )
   }
   
   return (
@@ -121,9 +134,9 @@ function App() {
       {/* {topStacks.map((data,i)=>{
         return (<Combo deck={data} key={i}/>)
       })} */}
-        <Combo deck={gameStacks[0]} discard={discardStack[0]}/>
-        <Combo deck={gameStacks[1]} discard={discardStack[1]}/>
-        <Combo deck={gameStacks[2]} discard={discardStack[2]}/>
+        <Combo deck={gameStacks[0]} discard={discardStack[0]} anim={animation}/>
+        <Combo deck={gameStacks[1]} discard={discardStack[1]} anim={animation}/>
+        <Combo deck={gameStacks[2]} discard={discardStack[2]} anim={animation}/>
     </div>
     <div className = 'menuWrapper'>
     <img className = 'image' src={cover} alt='game cover'></img>

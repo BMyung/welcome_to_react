@@ -1,6 +1,7 @@
 *{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 .App {
   text-align: center;
@@ -40,14 +41,23 @@ ul > li {
 
 }
 
-.cardFront {
-  background-image: url(./assets/door.jpg) ;
+.cardFrontContainer{
+  margin: 1rem auto;
   width: 190px;
   height: 275px;
+  position: relative;
+}
+
+
+
+.cardFront {
+  background-image: url(./assets/door.jpg) ;
   background-size: cover;
-  margin: 1rem auto;
   vertical-align: top;
   border: 1px solid black;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 .App > h1{
@@ -57,30 +67,6 @@ ul > li {
 .preview{
   font-weight: bold;
   font-size: 1rem;
-}
-
-.bis{
-  background-color: rgba(218, 62, 62, 0.65);
-  color: white;
-}
-.fence{
-  background-color: rgba(255, 255, 255);
-}
-.temp_agency{
-  background-color: rgba(224, 90, 0, 0.65);
-  color: white;
-}
-.real_estate{
-  background-color: rgba(111, 3, 121, 0.65);
-  color: white;
-}
-.park{
-  background-color: rgba(0, 110, 24, 0.65);
-  color: white;
-}
-.pool{
-  background-color: rgba(23, 139, 233, 0.65);
-  color: white;
 }
 
 .number{
@@ -370,6 +356,48 @@ display: flex;
 flex-direction: column;
 align-items: center;
 }
+
+.cardContainer{
+
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.cardContainer:first-child{
+  z-index: 2;
+}
+.cardContainer.move{
+  animation-name: move;
+  animation-duration: 850ms;
+  animation-timing-function: ease-out;
+}
+
+.backFlip{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotateY(180deg);
+  background-color: gray;
+}
+
+.cardFront, .backFlip{
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@keyframes move{
+  0%{
+    transform: translateY(0);
+  }
+  100%{
+    transform: translateY(292px) rotateY(180deg);
+  }
+}
+
 
 @media screen and (max-width: 725px){
   .cardArea{
