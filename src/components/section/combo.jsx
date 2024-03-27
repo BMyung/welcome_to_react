@@ -1,11 +1,8 @@
 export default function Combo({deck, discard, anim}){
     return (
     <div className='combo'>
-    <div className='cardFrontContainer'>
       <Card card={deck[0]} anim = {anim}/>
-      <Card card={deck[1]}/>
-    </div>
-      <DiscardPile card={discard[0]}/>
+      <DiscardPile card={discard[0]} anim={anim}/>
     </div>
   )
   }
@@ -19,27 +16,22 @@ export default function Combo({deck, discard, anim}){
       numText = card.number;
     }
     return (
-      <div className={"cardContainer " + anim}>
-        <div className='cardFront'>
+        <div className={'cardFront ' + anim}>
             <div className = {'preview ' + abilityText}>
               {abilityText.replace('_', ' ')}
             </div>
             <h1 className='number'>{numText}</h1>
         </div>
-        <div className="backFlip">
-          <h1 className={'ability ' + abilityText} >{abilityText.replace('_', ' ')}</h1>
-      </div>
-    </div>
   )
   }
   
-  function DiscardPile({card}){
+  function DiscardPile({card, anim}){
     let abilityText = "";
     if (card){
       abilityText = card.ability;
     }
     return (
-    <div className='cardBack'>
+    <div className={anim + ' cardBack'} >
         <h1 className={'ability ' + abilityText} >{abilityText.replace('_', ' ')}</h1>
     </div>
   

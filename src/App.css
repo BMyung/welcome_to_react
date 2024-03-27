@@ -32,41 +32,32 @@ ul > li {
   width: 100%;
   flex-wrap: wrap;
 }
+
 .cardArea{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   border: 1px solid black;
   margin: 0.5rem;
+  height: 630px;
 
 }
 
-.cardFrontContainer{
+
+.cardFront {
   margin: 1rem auto;
   width: 190px;
   height: 275px;
   position: relative;
-}
-
-
-
-.cardFront {
   background-image: url(./assets/door.jpg) ;
   background-size: cover;
   vertical-align: top;
   border: 1px solid black;
-  position: absolute;
-  height: 100%;
-  width: 100%;
+  transform-style: preserve-3d;
 }
 
 .App > h1{
   padding: 1rem; 
-}
-
-.preview{
-  font-weight: bold;
-  font-size: 1rem;
 }
 
 .number{
@@ -100,49 +91,12 @@ ul > li {
 
 }
 
-.goals{
-  flex-grow: 1;
-  width: 15%;
-}
-
 .menuWrapper{
   flex-grow: 1;
-  width: 15%;
+  width: 300px;
   margin-top: 0.5rem;
 }
 
-.ability{
-  font-size: 1.55rem;
-  border: 1px solid black;
-  margin: auto;
-  width: 100%;
-  padding: 4rem 0;
-  height: 100%;
-}
-
-.points{
-  display: flex;
-  justify-content: space-evenly;
-
-}
-
-.goalPoint1, .goalPoint2{
-  /* border: 1px solid black; */
-  padding: .5rem;
-  border-radius: 15px;
-}
-
-
-.goalCard{
-  border: 1px solid black;
-  margin: .5rem .5rem;
-  margin-bottom: 1rem;
-  padding: .5rem;
-}
-.goalDetail{
-display: flex;
-flex-direction: column;
-}
 
 .image{
   width: min(60%, 300px);
@@ -166,44 +120,22 @@ button:disabled{
   opacity: 0.25;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-ul > li {
-  padding: .25rem;
-}
-
-.wrapper{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-  flex-wrap: wrap;
-}
-
 .title{
   text-align: center;
   font-size: 42px;
 
 }
 
-.cardArea{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  border: 1px solid black;
-  margin: 0.5rem;
-  height: 630px;
-
-}
 
 .flip{
   transform: rotateY( 360deg ) ;
-  transition: transform 0.65s;
+  transition: transform 0.50s;
 }
+
+.cardBack.flip{
+  transition-delay: 0.2s;
+}
+
 
 
 
@@ -264,11 +196,6 @@ ul > li {
   flex-grow: 1;
   width: 15%;
   max-width: 450px;
-}
-
-.menuWrapper{
-  width: 300px;
-  margin-top: 0.5rem;
 }
 
 .ability{
@@ -362,17 +289,11 @@ align-items: center;
   height: 100%;
   width: 100%;
   position: absolute;
-  transition: transform 0.8s;
   transform-style: preserve-3d;
 }
 
 .cardContainer:first-child{
   z-index: 2;
-}
-.cardContainer.move{
-  animation-name: move;
-  animation-duration: 850ms;
-  animation-timing-function: ease-out;
 }
 
 .backFlip{
@@ -384,10 +305,6 @@ align-items: center;
   background-color: gray;
 }
 
-.cardFront, .backFlip{
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
 
 @keyframes move{
   0%{

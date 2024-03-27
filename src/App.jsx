@@ -37,12 +37,6 @@ function App() {
   }
 ])
   
-// const move = ()=>{
-//   setAnimation('move')
-//   setTimeout(()=>{
-//     setAnimation('')
-//   }, 855)
-// }
 
   function newGoals(){
     let arr = [];
@@ -102,14 +96,14 @@ function App() {
     }
 
   function nextCard(){
-    setAnimation('move')
+    setAnimation('flip')
+    setTimeout(()=>{
+      setAnimation('')
+    }, 550)
     setTimeout(()=> {
       if (remaining <= 4){
         reshuffle()
       }
-      // setTimeout(()=>{
-        setAnimation('')
-      // }, 855)
         setGameStacks(gs => [gs[0].slice(1), gs[1].slice(1), gs[2].slice(1)])
         setDiscardStack(ds =>[
           [...gameStacks[0].slice(0,1), ...ds[0]],
@@ -117,7 +111,7 @@ function App() {
           [...gameStacks[2].slice(0,1), ...ds[2]]
         ])
      , setRemaining(n => n-1);
-    }, 850
+    }, 200
     )
   }
   
@@ -126,17 +120,14 @@ function App() {
      <h1>Welcome to Your Perfect Home</h1>
     <div className='wrapper'>
     <div className = 'goals'>
-      <Goal goalCard = {goals[0]}/>
-      <Goal goalCard = {goals[1]}/>
-      <Goal goalCard = {goals[2]}/>
+      {goals.map((data,i)=>{
+        return (<Goal goalCard = {data} key={i}/>)
+      })}
     </div>
     <div className='cardArea'>
-      {/* {topStacks.map((data,i)=>{
-        return (<Combo deck={data} key={i}/>)
-      })} */}
-        <Combo deck={gameStacks[0]} discard={discardStack[0]} anim={animation}/>
-        <Combo deck={gameStacks[1]} discard={discardStack[1]} anim={animation}/>
-        <Combo deck={gameStacks[2]} discard={discardStack[2]} anim={animation}/>
+      {gameStacks.map((data,i)=>{
+        return (<Combo deck={data} discard={discardStack[i]} key={i}/>)
+      })}
     </div>
     <div className = 'menuWrapper'>
     <img className = 'image' src={cover} alt='game cover'></img>
