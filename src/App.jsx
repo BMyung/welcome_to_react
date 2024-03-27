@@ -126,7 +126,7 @@ function App() {
     </div>
     <div className='cardArea'>
       {gameStacks.map((data,i)=>{
-        return (<Combo deck={data} discard={discardStack[i]} key={i}/>)
+        return (<Combo deck={data} discard={discardStack[i]} key={i} anim={animation}/>)
       })}
     </div>
     <div className = 'menuWrapper'>
